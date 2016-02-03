@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Lift list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Status</th>
+                <th>Comment</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lift in lifts %}
+            <tr>
+                <td><a href="{{ path('lift_show', { 'id': lift.id }) }}">{{ lift.id }}</a></td>
+                <td>{% if lift.status %}Yes{% else %}No{% endif %}</td>
+                <td>{{ lift.comment }}</td>
+                <td>{{ lift.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('lift_show', { 'id': lift.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

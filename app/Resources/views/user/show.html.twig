@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>User</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ user.FirstName }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ user.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Login</th>
+                <td>{{ user.login }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ user.tel }}</td>
+            </tr>
+            <tr>
+                <th>Authkey</th>
+                <td>{{ user.authKey }}</td>
+            </tr>
+            <tr>
+                <th>Surname</th>
+                <td>{{ user.surName }}</td>
+            </tr>
+            <tr>
+                <th>Lastseen</th>
+                <td>{% if user.lastSeen %}{{ user.lastSeen|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Lastposupdate</th>
+                <td>{% if user.lastPosUpdate %}{{ user.lastPosUpdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Mappoint</th>
+                <td>{{ user.mapPoint }}</td>
+            </tr>
+            <tr>
+                <th>Precision</th>
+                <td>{{ user.precision }}</td>
+            </tr>
+            <tr>
+                <th>Altmax</th>
+                <td>{{ user.altMax }}</td>
+            </tr>
+            <tr>
+                <th>Altmin</th>
+                <td>{{ user.altMin }}</td>
+            </tr>
+            <tr>
+                <th>Denivele</th>
+                <td>{{ user.denivele }}</td>
+            </tr>
+            <tr>
+                <th>Kmtot</th>
+                <td>{{ user.kmTot }}</td>
+            </tr>
+            <tr>
+                <th>Kmski</th>
+                <td>{{ user.kmSki }}</td>
+            </tr>
+            <tr>
+                <th>Maxspeed</th>
+                <td>{{ user.maxSpeed }}</td>
+            </tr>
+            <tr>
+                <th>Avgspeed</th>
+                <td>{{ user.avgSpeed }}</td>
+            </tr>
+            <tr>
+                <th>Skitime</th>
+                <td>{{ user.skiTime }}</td>
+            </tr>
+            <tr>
+                <th>Totaltime</th>
+                <td>{{ user.totalTime }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('user_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

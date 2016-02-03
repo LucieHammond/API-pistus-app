@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Contest list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contest in contests %}
+            <tr>
+                <td><a href="{{ path('contest_show', { 'id': contest.id }) }}">{{ contest.id }}</a></td>
+                <td>{{ contest.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('contest_show', { 'id': contest.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Slope list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Status</th>
+                <th>Name</th>
+                <th>Comment</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for slope in slopes %}
+            <tr>
+                <td><a href="{{ path('slope_show', { 'id': slope.id }) }}">{{ slope.id }}</a></td>
+                <td>{% if slope.status %}Yes{% else %}No{% endif %}</td>
+                <td>{{ slope.name }}</td>
+                <td>{{ slope.comment }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('slope_show', { 'id': slope.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

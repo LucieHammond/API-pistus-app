@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Lift</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ lift.id }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{% if lift.status %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ lift.comment }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ lift.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('lift_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

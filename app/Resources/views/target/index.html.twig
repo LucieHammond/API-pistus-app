@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Target list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for target in targets %}
+            <tr>
+                <td><a href="{{ path('admin_target_show', { 'id': target.id }) }}">{{ target.id }}</a></td>
+                <td>{{ target.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_target_show', { 'id': target.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_target_edit', { 'id': target.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_target_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
