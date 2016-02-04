@@ -70,3 +70,17 @@ b27f5a,::1,POST,http://localhost/apistus/web/app_dev.php/auth/2013brendlet,14545
 97a75e,::1,GET,http://localhost/apistus/web/app_dev.php/auth/2013brendlet,1454508867,5f454b,200
 5f454b,::1,POST,http://localhost/apistus/web/app_dev.php/auth/2013brendlet,1454508867,,500
 7a3ac3,::1,POST,http://localhost/apistus/web/app_dev.php/auth/2013brendlet,1454508925,,200
+689560,::1,GET,http://localhost/apistus/web/app_dev.php/admin/target,1454604871,,301
+0e3f6e,::1,GET,http://localhost/apistus/web/app_dev.php/admin/target/,1454604872,,200
+5ed049,::1,GET,http://localhost/apistus/web/app_dev.php/admin/target/1/edit,1454604878,9eaa65,200
+9eaa65,::1,GET,http://localhost/apistus/web/app_dev.php/admin/target/1/edit,1454604878,,500
+cb612f,::1,GET,http://localhost/apistus/web/app_dev.php/admin/target/1/edit,1454604908,a0674f,200
+a0674f,::1,GET,http://localhost/apistus/web/app_dev.php/admin/target/1/edit,1454604908,,500
+cf06b8,::1,GET,http://localhost/apistus/web/app_dev.php/admin/target,1454605872,,301
+643e84,::1,GET,http://localhost/apistus/web/app_dev.php/admin/target/,1454605873,,200
+95b859,::1,GET,http://localhost/apistus/web/app_dev.php/admin/target/1/edit,1454606027,,200
+af2e2f,::1,POST,http://localhost/apistus/web/app_dev.php/admin/target/1/edit,1454606034,,302
+2829ec,::1,GET,http://localhost/apistus/web/app_dev.php/admin/target/1/edit,1454606035,,200
+1cf937,::1,GET,http://localhost/apistus/web/app_dev.php/admin/target/,1454606039,,200
+0034aa,::1,GET,http://localhost/apistus/web/app_dev.php/admin/target/1,1454606043,,200
+15fe8d,::1,GET,http://localhost/apistus/web/app_dev.php/admin/target/1/edit,1454606048,,200

@@ -50,7 +50,7 @@ class User implements JsonSerializable
      */
     private $room;
 
-    /*
+    /**
      * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\Target", mappedBy="users")
      */
     private $targets;
@@ -788,5 +788,15 @@ class User implements JsonSerializable
     public function getHash()
     {
         return $this->hash;
+    }
+
+    /**
+     * Remove target
+     *
+     * @param \ApiBundle\Entity\Target $target
+     */
+    public function removeTarget(\ApiBundle\Entity\Target $target)
+    {
+        $this->targets->removeElement($target);
     }
 }

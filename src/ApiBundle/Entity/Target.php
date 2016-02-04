@@ -28,7 +28,7 @@ class Target
      */
     private $name;
 
-    /*
+    /**
      * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\User", inversedBy="targets")
      * @ORM\JoinTable(name="user_target")
      */
@@ -86,5 +86,15 @@ class Target
     public function setUsers($users)
     {
         $this->users = $users;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \ApiBundle\Entity\User $user
+     */
+    public function removeUser(\ApiBundle\Entity\User $user)
+    {
+        $this->users->removeElement($user);
     }
 }
