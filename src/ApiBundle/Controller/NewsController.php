@@ -26,7 +26,14 @@ class NewsController extends Controller
     public function indexAction(User $user)
     {
         $em = $this->getDoctrine()->getManager();
-        $news = $em->getRepository('ApiBundle:News')->findAll();
+        $news = $em->createQuery(
+            "SELECT DISTINCT n
+            FROM ApiBundle:News n
+            JOIN ApiBundle:User u WITH u.id = :uid
+            JOIN u.targets t
+            WHERE n.target = 'all' OR n.target = t.name
+            ORDER BY n.date ASC"
+        )->setParameter('uid', $user->getId())->getResult();
         return new Response(json_encode($news));
     }
 

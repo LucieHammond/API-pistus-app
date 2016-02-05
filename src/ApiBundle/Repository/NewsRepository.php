@@ -10,11 +10,4 @@ namespace ApiBundle\Repository;
  */
 class NewsRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getNewsByTargets($arrayTargets){
-        $return = array();
-        foreach ($arrayTargets as $key => $target) {
-            $return = array_merge($return,$this->findByTarget($target));
-        }
-        return $return;
-    }
 }

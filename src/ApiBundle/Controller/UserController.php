@@ -30,6 +30,15 @@ class UserController extends Controller
     }
 
     /**
+     * @Route("/update", name="apiUpdate")
+     */
+    public function updateAction(AppUser $user, Request $request){
+        $res = $user->handleRequest($request);
+        $this->getDoctrine()->getManager()->flush();
+        return new Response(json_encode(array('Result'=>($res)?"Success":"Error")));
+    }
+
+    /**
      * Finds and displays a User entity.
      *
      * @Route("/{id}", name="user_show")

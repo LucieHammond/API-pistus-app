@@ -34,6 +34,7 @@ class DefaultController extends Controller
         if ($user->getHash() != $pass)
             return new Response('Password Error', 403, array());
         $user->setAuthKey(uniqid());
+        $this->getDoctrine()->getManager()->flush();
         $data = array('authKey' => $user->getAuthKey(), 'data' => $user );
         return new Response(json_encode($data));
     }
