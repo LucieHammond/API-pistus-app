@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use ApiBundle\Entity\Contest;
 use ApiBundle\Entity\User;
 /**
@@ -27,7 +27,11 @@ class ContestController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $contests = $em->getRepository('ApiBundle:Contest')->findAll();
-        return new Response(json_encode($contests));
+        $response = new JsonResponse();
+        $response->setData(array(
+            'data' => $contests
+        ));
+        return $response;
     }
 
     /**
@@ -39,6 +43,10 @@ class ContestController extends Controller
      */
     public function showAction(User $user, Contest $contest)
     {
-        return new Response(json_encode($contest));
+        $response = new JsonResponse();
+        $response->setData(array(
+            'data' => $contest
+        ));
+        return $response;
     }
 }

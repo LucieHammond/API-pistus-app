@@ -5,6 +5,7 @@ namespace ApiBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use ApiBundle\Entity\User;
 
@@ -36,6 +37,8 @@ class DefaultController extends Controller
         $user->setAuthKey(uniqid());
         $this->getDoctrine()->getManager()->flush();
         $data = array('authKey' => $user->getAuthKey(), 'data' => $user );
-        return new Response(json_encode($data));
+        $response = new JsonResponse();
+        $response->setData($data);
+        return $response;
     }
 }

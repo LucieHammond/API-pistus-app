@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use ApiBundle\Entity\News;
 use ApiBundle\Entity\User;
 
@@ -35,7 +35,11 @@ class NewsController extends Controller
             WHERE n.target = 'all' OR n.target = t.name
             ORDER BY n.date ASC"
         )->setParameter('uid', $user->getId())->getResult();
-        return new Response(json_encode($news));
+        $response = new JsonResponse();
+        $response->setData(array(
+            'data' => $news
+        ));
+        return $response;
     }
 
     /**
@@ -47,6 +51,10 @@ class NewsController extends Controller
      */
     public function showAction(User $user, News $news)
     {
-        return new Response(json_encode($news));
+        $response = new JsonResponse();
+        $response->setData(array(
+            'data' => $news
+        ));
+        return $response;
     }
 }

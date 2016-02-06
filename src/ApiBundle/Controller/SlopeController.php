@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use ApiBundle\Entity\Slope;
 use ApiBundle\Entity\User;
 
@@ -28,7 +28,11 @@ class SlopeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $slopes = $em->getRepository('ApiBundle:Slope')->findAll();
-        return new Response(json_encode($slopes));
+        $response = new JsonResponse();
+        $response->setData(array(
+            'data' => $slopes
+        ));
+        return $response;
     }
 
     /**
@@ -40,6 +44,10 @@ class SlopeController extends Controller
      */
     public function showAction(User $user, Slope $slope)
     {
-        return new Response(json_encode($slope));
+        $response = new JsonResponse();
+        $response->setData(array(
+            'data' => $slope
+        ));
+        return $response;
     }
 }

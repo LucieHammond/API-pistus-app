@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use ApiBundle\Entity\User;
 
 /**
@@ -27,7 +27,11 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $users = $em->getRepository('ApiBundle:User')->findAll();
-        return new Response(json_encode($users));
+        $response = new JsonResponse();
+        $response->setData(array(
+            'data' => $users
+        ));
+        return $response;
     }
 
     /**
@@ -36,7 +40,11 @@ class UserController extends Controller
     public function updateAction(AppUser $user, Request $request){
         $res = $user->handleRequest($request);
         $this->getDoctrine()->getManager()->flush();
-        return new Response(json_encode(array('Result'=>($res)?"Success":"Error")));
+        $response = new JsonResponse();
+        $response->setData(array(
+            'data' => array('data'=>($res)?"Success":"Error"))
+        ));
+        return $response;
     }
 
     /**
@@ -48,6 +56,10 @@ class UserController extends Controller
      */
     public function showAction(User $user, User $target)
     {
-        return new Response(json_encode($target));
+        $response = new JsonResponse();
+        $response->setData(array(
+            'data' => $target
+        ));
+        return $response;
     }
 }

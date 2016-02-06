@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use ApiBundle\Entity\Room;
 use ApiBundle\Entity\User;
 
@@ -28,7 +28,11 @@ class RoomController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $rooms = $em->getRepository('ApiBundle:Room')->findAll();
-        return new Response(json_encode($rooms));
+        $response = new JsonResponse();
+        $response->setData(array(
+            'data' => $rooms
+        ));
+        return $response;
     }
 
     /**
@@ -40,6 +44,10 @@ class RoomController extends Controller
      */
     public function showAction(User $user, Room $room)
     {
-        return new Response(json_encode($room));
+        $response = new JsonResponse();
+        $response->setData(array(
+            'data' => $room
+        ));
+        return $response;
     }
 }

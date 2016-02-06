@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use ApiBundle\Entity\Lift;
 use ApiBundle\Entity\User;
 
@@ -28,7 +28,11 @@ class LiftController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $lifts = $em->getRepository('ApiBundle:Lift')->findAll();
-        return new Response(json_encode($lifts));
+        $response = new JsonResponse();
+        $response->setData(array(
+            'data' => $lifts
+        ));
+        return $response;
     }
 
     /**
@@ -40,6 +44,10 @@ class LiftController extends Controller
      */
     public function showAction(User $user, Lift $lift)
     {
-        return new Response(json_encode($lift));
+        $response = new JsonResponse();
+        $response->setData(array(
+            'data' => $lift
+        ));
+        return $response;
     }
 }
