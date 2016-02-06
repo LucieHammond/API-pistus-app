@@ -713,7 +713,7 @@ class User implements JsonSerializable
                         'firstName'=>$this->getFirstName(),
                         'lastName'=>$this->getLastName(),
                         'surName'=>$this->getSurName(),
-                        'room'=>($this->getRoom() ? $this->getRoom->getNumber() : null),
+                        'room'=>($this->getRoom() ? $this->getRoom()->getNumber() : null),
                         'lastSeen'=>$this->lastSeen->format('Y-m-d H:i:s'),
                         'lastPosUpdate'=>$this->lastPosUpdate->format('Y-m-d H:i:s'),
                         'mapPoint'=>$this->mapPoint,
