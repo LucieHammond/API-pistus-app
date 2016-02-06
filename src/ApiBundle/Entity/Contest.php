@@ -90,6 +90,7 @@ class Contest implements JsonSerializable
 
     public function jsonSerialize(){
         return array(
+            'id'=>$this->id,
             'name'=>$this->name, 
             'podium'=> array(
                 0 => $this->first,

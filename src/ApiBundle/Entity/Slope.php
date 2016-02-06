@@ -135,6 +135,7 @@ class Slope implements JsonSerializable
 
     public function jsonSerialize(){
         return array(
+            'id'=>$this->id,
             'status'=>$this->status,
             'comment'=>$this->comment,
             'name'=>$this->name,

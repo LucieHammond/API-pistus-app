@@ -111,7 +111,10 @@ class Room implements JsonSerializable
 
     public function jsonSerialize(){
 
-        return array('number'=>$this->number,
-            'roomates'=>$this->roomates);
+        return array(
+            'id'=>$this->id,
+            'number'=>$this->number,
+            'roomates'=>$this->roomates
+        );
     }
 }

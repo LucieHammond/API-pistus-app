@@ -709,25 +709,26 @@ class User implements JsonSerializable
     }
 
     public function jsonSerialize(){
-        return array('login' =>$this->getLogin(),
-                        'firstName'=>$this->getFirstName(),
-                        'lastName'=>$this->getLastName(),
-                        'surName'=>$this->getSurName(),
-                        'room'=>($this->getRoom() ? $this->getRoom()->getNumber() : null),
-                        'lastSeen'=>$this->lastSeen->format('Y-m-d H:i:s'),
-                        'lastPosUpdate'=>$this->lastPosUpdate->format('Y-m-d H:i:s'),
-                        'mapPoint'=>$this->mapPoint,
-                        'precision'=>$this->precision,
-                        'altMax'=>$this->altMax,
-                        'altMin'=>$this->altMin,
-                        'denivele'=>$this->denivele,
-                        'kmTot'=>$this->kmTot,
-                        'kmSki'=>$this->kmSki,
-                        'maxSpeed'=>$this->maxSpeed,
-                        'avgSpeed'=>$this->avgSpeed,
-                        'skiTime'=>$this->skiTime,
-                        'totalTime'=>$this->totalTime
-                        );
+        return array(
+            'login' =>$this->getLogin(),
+            'firstName'=>$this->getFirstName(),
+            'lastName'=>$this->getLastName(),
+            'surName'=>$this->getSurName(),
+            'room'=>($this->getRoom() ? $this->getRoom()->getNumber() : null),
+            'lastSeen'=>$this->lastSeen->format('Y-m-d H:i:s'),
+            'lastPosUpdate'=>$this->lastPosUpdate->format('Y-m-d H:i:s'),
+            'mapPoint'=>$this->mapPoint,
+            'precision'=>$this->precision,
+            'altMax'=>$this->altMax,
+            'altMin'=>$this->altMin,
+            'denivele'=>$this->denivele,
+            'kmTot'=>$this->kmTot,
+            'kmSki'=>$this->kmSki,
+            'maxSpeed'=>$this->maxSpeed,
+            'avgSpeed'=>$this->avgSpeed,
+            'skiTime'=>$this->skiTime,
+            'totalTime'=>$this->totalTime
+        );
     }
 
     public function handleRequest($request){

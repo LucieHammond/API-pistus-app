@@ -154,11 +154,13 @@ class News implements JsonSerializable
     }
 
     public function jsonSerialize(){
-        return array('title'=>$this->title,
-                    'text'=>$this->text,
-                    'date'=>$this->date->format('Y-m-d H:i:s'),
-                    'general'=>($this->target == 'all')
-                    );
+        return array(
+            'id'=>$this->id,
+            'title'=>$this->title,
+            'text'=>$this->text,
+            'date'=>$this->date->format('Y-m-d H:i:s'),
+            'general'=>($this->target == 'all')
+        );
     }
 
     public function __toString(){
