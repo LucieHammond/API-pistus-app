@@ -42,7 +42,7 @@ class UserController extends Controller
         $this->getDoctrine()->getManager()->flush();
         $response = new JsonResponse();
         $response->setData(array(
-            'data' => array('data'=>($res)?"Success":"Error"))
+            'data' => array('data'=>($res)?"Success":"Error")
         ));
         return $response;
     }
