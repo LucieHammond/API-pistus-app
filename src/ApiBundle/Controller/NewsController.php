@@ -40,7 +40,8 @@ class NewsController extends Controller
     /**
      * Finds and displays a News entity.
      *
-     * @Route("/{id}", name="news_show")
+     * @Route("/{news_id}", name="news_show")
+     * @ParamConverter("news", class="ApiBundle:News", options={"id" = "news_id"})
      * @Method("GET")
      */
     public function showAction(User $user, News $news)

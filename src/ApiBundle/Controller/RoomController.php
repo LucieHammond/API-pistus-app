@@ -33,7 +33,8 @@ class RoomController extends Controller
     /**
      * Finds and displays a Room entity.
      *
-     * @Route("/{id}", name="room_show")
+     * @Route("/{room_id}", name="room_show")
+     * @ParamConverter("room", class="ApiBundle:Room", options={"id" = "room_id"})
      * @Method("GET")
      */
     public function showAction(User $user, Room $room)

@@ -33,7 +33,8 @@ class LiftController extends Controller
     /**
      * Finds and displays a Lift entity.
      *
-     * @Route("/{id}", name="lift_show")
+     * @Route("/{lift_id}", name="lift_show")
+     * @ParamConverter("lift", class="ApiBundle:Lift", options={"id" = "lift_id"})
      * @Method("GET")
      */
     public function showAction(User $user, Lift $lift)

@@ -33,7 +33,8 @@ class SlopeController extends Controller
     /**
      * Finds and displays a Slope entity.
      *
-     * @Route("/{id}", name="slope_show")
+     * @Route("/{slope_id}", name="slope_show")
+     * @ParamConverter("slope", class="ApiBundle:Slope", options={"id" = "slope_id"})
      * @Method("GET")
      */
     public function showAction(User $user, Slope $slope)

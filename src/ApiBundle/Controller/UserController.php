@@ -41,7 +41,8 @@ class UserController extends Controller
     /**
      * Finds and displays a User entity.
      *
-     * @Route("/{id}", name="user_show")
+     * @Route("/{user_id}", name="user_show")
+     * @ParamConverter("target", class="ApiBundle:User", options={"id" = "user_id"})
      * @Method("GET")
      */
     public function showAction(User $user, User $target)

@@ -32,11 +32,14 @@ class ContestController extends Controller
     /**
      * Finds and displays a Contest entity.
      *
-     * @Route("/{id}", name="contest_show")
+     * @Route("/{comment_id}", name="contest_show")
+     * @ParamConverter("contest", class="ApiBundle:Contest", options={"id" = "comment_id"})
      * @Method("GET")
      */
     public function showAction(User $user, Contest $contest)
     {
+        var_dump($user);
+        var_dump($contest);
         return new Response(json_encode($contest));
     }
 }
