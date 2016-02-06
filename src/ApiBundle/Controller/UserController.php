@@ -57,11 +57,11 @@ class UserController extends Controller
         foreach ($keys as $key) {
             $func = "get" . ucfirst($key);
             $data[$key]=array();
-            $data[$key]['count'] = $em->createQuery(
+            $data[$key]['count'] = intval($em->createQuery(
                 "SELECT count(u.id) 
                 FROM ApiBundle:User u 
                 WHERE u.".$key." > :".$key
-            )->setParameter($key, $user->$func())->getSingleResult();
+            )->setParameter($key, $user->$func())->getSingleResult()['1'])+1;
             $data[$key]['ranking'] = $em->createQuery(
                 "SELECT u 
                 FROM ApiBundle:User u 
