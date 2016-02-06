@@ -6,6 +6,7 @@ namespace ApiBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Response;
 use ApiBundle\Entity\Contest;
 use ApiBundle\Entity\User;
@@ -38,8 +39,6 @@ class ContestController extends Controller
      */
     public function showAction(User $user, Contest $contest)
     {
-        var_dump($user);
-        var_dump($contest);
         return new Response(json_encode($contest));
     }
 }
