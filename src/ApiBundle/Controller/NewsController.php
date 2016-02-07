@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use ApiBundle\Entity\News;
 use ApiBundle\Entity\User;
 
@@ -27,19 +28,23 @@ class NewsController extends Controller
     public function indexAction(User $user)
     {
         $em = $this->getDoctrine()->getManager();
-        $news = $em->createQuery(
+        $myNews = $em->createQuery(
             "SELECT DISTINCT n
             FROM ApiBundle:News n
             JOIN ApiBundle:User u WITH u.authKey = :ak
             JOIN u.targets t
-            WHERE n.target = 'all' OR n.target = t.name
+            WHERE n.target = t.name
             ORDER BY n.date ASC"
-        )->setParameter('ak', $user->getAuthKey())->getResult();
+        )->setParameter('ak', $user->getAuthKey())->getResult();;
+        $generalNews = $em->createQuery(
+            "SELECT DISTINCT n
+            FROM ApiBundle:News n WHERE n.target = 'all' ORDER BY n.date ASC");
+
         $response = new JsonResponse();
         $response->setData(array(
-            'data' => $news,
-            'user' => $user
-        ));
+            'myNews' => $myNews,
+            'generalNews' => $generalNews
+        )));
         return $response;
     }
 
