@@ -37,7 +37,8 @@ class NewsController extends Controller
         )->setParameter('ak', $user->getAuthKey())->getResult();
         $response = new JsonResponse();
         $response->setData(array(
-            'data' => $news
+            'data' => $news,
+            'user' => $user
         ));
         return $response;
     }
