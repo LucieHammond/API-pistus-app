@@ -35,10 +35,10 @@ class NewsController extends Controller
             JOIN u.targets t
             WHERE n.target = t.name
             ORDER BY n.date ASC"
-        )->setParameter('ak', $user->getAuthKey())->getResult();;
+        )->setParameter('ak', $user->getAuthKey())->getResult();
         $generalNews = $em->createQuery(
             "SELECT DISTINCT n
-            FROM ApiBundle:News n WHERE n.target = 'all' ORDER BY n.date ASC");
+            FROM ApiBundle:News n WHERE n.target = 'all' ORDER BY n.date ASC")->getResult();
 
         $response = new JsonResponse();
         $response->setData(array(
