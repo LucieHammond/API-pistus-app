@@ -30,11 +30,11 @@ class NewsController extends Controller
         $news = $em->createQuery(
             "SELECT DISTINCT n
             FROM ApiBundle:News n
-            JOIN ApiBundle:User u WITH u.id = :uid
+            JOIN ApiBundle:User u WITH u.authKey = :ak
             JOIN u.targets t
             WHERE n.target = 'all' OR n.target = t.name
             ORDER BY n.date ASC"
-        )->setParameter('uid', $user->getId())->getResult();
+        )->setParameter('ak', $user->getAuthKey())->getResult();
         $response = new JsonResponse();
         $response->setData(array(
             'data' => $news
