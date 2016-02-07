@@ -44,7 +44,7 @@ class NewsController extends Controller
         $response->setData(array(
             'myNews' => $myNews,
             'generalNews' => $generalNews
-        )));
+        ));
         return $response;
     }
 
