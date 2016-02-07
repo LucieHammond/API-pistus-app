@@ -51,6 +51,13 @@ class User implements JsonSerializable
     private $room;
 
     /**
+     * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\Slope", cascade={"all"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $lastSlope;
+
+
+    /**
      * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\Target", mappedBy="users")
      */
     private $targets;
@@ -727,7 +734,8 @@ class User implements JsonSerializable
             'maxSpeed'=>$this->maxSpeed,
             'avgSpeed'=>$this->avgSpeed,
             'skiTime'=>$this->skiTime,
-            'totalTime'=>$this->totalTime
+            'totalTime'=>$this->totalTime,
+            'lastSlope'=>$this->lastSlope
         );
     }
 
@@ -799,5 +807,29 @@ class User implements JsonSerializable
     public function removeTarget(\ApiBundle\Entity\Target $target)
     {
         $this->targets->removeElement($target);
+    }
+
+    /**
+     * Set lastSlope
+     *
+     * @param \ApiBundle\Entity\Slope $lastSlope
+     *
+     * @return User
+     */
+    public function setLastSlope(\ApiBundle\Entity\Slope $lastSlope = null)
+    {
+        $this->lastSlope = $lastSlope;
+
+        return $this;
+    }
+
+    /**
+     * Get lastSlope
+     *
+     * @return \ApiBundle\Entity\Slope
+     */
+    public function getLastSlope()
+    {
+        return $this->lastSlope;
     }
 }
