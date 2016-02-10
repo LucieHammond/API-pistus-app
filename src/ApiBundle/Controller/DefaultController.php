@@ -34,7 +34,8 @@ class DefaultController extends Controller
         }
         if ($user->getHash() != $pass)
             return new Response('Password Error', 403, array());
-        $user->setAuthKey(uniqid());
+        if(!$user->getAuthKey())
+            $user->setAuthKey(uniqid());
         $this->getDoctrine()->getManager()->flush();
         $data = array('authKey' => $user->getAuthKey(), 'data' => $user );
         $response = new JsonResponse();
