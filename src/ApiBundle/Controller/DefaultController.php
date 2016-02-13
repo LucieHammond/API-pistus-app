@@ -70,4 +70,27 @@ class DefaultController extends Controller
         ));
         return $response;
     }
+
+    /**
+     * @Route("/rankingRoom/{authKey}", name="api_rankingRoom")
+     */
+    public function rankingRoomAction(User $user){
+        $keys = ['maxSpeed', 'altMax', 'kmSki', 'skiTime'];
+        $em = $this->getDoctrine()->getManager();
+        $data = array();
+        foreach ($keys as $key){
+            $data[$key]['ranking'] = $em->createQuery(
+                "SELECT r, AVG(u.".$key.") AS stat
+                FROM ApiBundle:Room r
+                JOIN r.roomates u 
+                GROUP BY r
+                ORDER BY stat"
+            )->setMaxResults(5)->getResult();
+        }
+        $response = new JsonResponse();
+        $response->setData(array(
+            'data' => $data
+        ));
+        return $response;
+    }
 }
