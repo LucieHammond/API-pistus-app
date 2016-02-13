@@ -29,6 +29,13 @@ class Room implements JsonSerializable
     private $number;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="comment", type="string", length=255)
+     */
+    private $comment;
+
+    /**
      * @ORM\OneToMany(targetEntity="ApiBundle\Entity\User", mappedBy="room", cascade={"all"})
      * @ORM\JoinColumn(nullable=true)
      */
@@ -114,7 +121,32 @@ class Room implements JsonSerializable
         return array(
             'id'=>$this->id,
             'number'=>$this->number,
-            'roomates'=>$this->roomates
+            'roomates'=>$this->roomates,
+            'comment'=>$this->comment
         );
+    }
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     *
+     * @return Room
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }
