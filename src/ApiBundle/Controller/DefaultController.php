@@ -61,7 +61,7 @@ class DefaultController extends Controller
             $data[$key]['ranking'] = $em->createQuery(
                 "SELECT u 
                 FROM ApiBundle:User u 
-                ORDER BY u." . $key 
+                ORDER BY u." . $key ." DESC"
             )->setMaxResults(5)->getResult();
         }
         $response = new JsonResponse();
@@ -84,7 +84,7 @@ class DefaultController extends Controller
                 FROM ApiBundle:Room r
                 JOIN r.roomates u 
                 GROUP BY r
-                ORDER BY stat"
+                ORDER BY stat DESC"
             )->setMaxResults(5)->getResult();
         }
         $response = new JsonResponse();
