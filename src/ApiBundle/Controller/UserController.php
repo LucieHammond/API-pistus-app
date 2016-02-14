@@ -38,9 +38,11 @@ class UserController extends Controller
 
     /**
      * @Route("/update", name="apiUpdate")
+    * @Method("POST")
      */
     public function updateAction(User $user, Request $request){
         $res = $user->handleRequest($request);
+
         $this->getDoctrine()->getManager()->flush();
         $response = new JsonResponse();
         $response->setData(array(

@@ -740,7 +740,7 @@ class User implements JsonSerializable
     }
 
     public function handleRequest($request){
-        $data = json_decode($request->getContent(), true);
+        $data = $request->request->all();
         if (!$data)
             return false;
         foreach ($data as $key => $value) {
