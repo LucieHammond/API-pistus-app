@@ -114,9 +114,17 @@ class User implements JsonSerializable
     /**
      * @var int
      *
-     * @ORM\Column(name="mapPoint", type="integer")
+     * @ORM\Column(name="mapPointX", type="integer")
      */
-    private $mapPoint = 0;
+    private $mapPointX = 0;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="mapPointY", type="integer")
+     */
+    private $mapPointY = 0;
+
 
     /**
      * @var float
@@ -463,14 +471,27 @@ class User implements JsonSerializable
     }
 
     /**
-     * Set mapPoint
+     * Set mapPointX
      *
-     * @param integer $mapPoint
+     * @param integer $mapPointX
      * @return User
      */
-    public function setMapPoint($mapPoint)
+    public function setMapPointX($mapPointX)
     {
-        $this->mapPoint = $mapPoint;
+        $this->mapPointX = $mapPointX;
+
+        return $this;
+    }
+
+    /**
+     * Set mapPointY
+     *
+     * @param integer $mapPointY
+     * @return User
+     */
+    public function setMapPointY($mapPointY)
+    {
+        $this->mapPointY = $mapPointY;
 
         return $this;
     }
@@ -499,13 +520,23 @@ class User implements JsonSerializable
     }
 
     /**
-     * Get mapPoint
+     * Get mapPointX
      *
      * @return integer
      */
-    public function getMapPoint()
+    public function getMapPointX()
     {
-        return $this->mapPoint;
+        return $this->mapPointX;
+    }
+
+    /**
+     * Get mapPointY
+     *
+     * @return integer
+     */
+    public function getMapPointY()
+    {
+        return $this->mapPointY;
     }
 
     /**
@@ -724,7 +755,8 @@ class User implements JsonSerializable
             'room'=>($this->getRoom() ? $this->getRoom()->getNumber() : null),
             'lastSeen'=>$this->lastSeen->format('Y-m-d H:i:s'),
             'lastPosUpdate'=>$this->lastPosUpdate->format('Y-m-d H:i:s'),
-            'mapPoint'=>$this->mapPoint,
+            'mapPointX'=>$this->mapPointX,
+            'mapPointY'=>$this->mapPointY,
             'precision'=>$this->precision,
             'altMax'=>$this->altMax,
             'altMin'=>$this->altMin,
