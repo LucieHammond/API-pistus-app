@@ -771,8 +771,7 @@ class User implements JsonSerializable
         );
     }
 
-    public function handleRequest($request){
-        $data = $request->request->all();
+    public function handleRequest($data){
         if (!$data)
             return false;
         foreach ($data as $key => $value) {

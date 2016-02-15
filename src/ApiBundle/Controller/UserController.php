@@ -41,14 +41,19 @@ class UserController extends Controller
     * @Method("POST")
      */
     public function updateAction(User $user, Request $request){
-        $res = $user->handleRequest($request);
+        if (substr($request->getContent(), 0, 1) == "{")
+        {
+            $data = json_decode($request->getContent(), true);
+        } else {
+            $data = $request->request->all();
+        }
+        $res = $user->handleRequest($data);
 
         $this->getDoctrine()->getManager()->flush();
         $response = new JsonResponse();
         $response->setData(array(
             'data' => ($res)?"Success":"Error",
-            'input'=>$request->request->all(),
-            'inputC'=>$request->getContent()
+            'input'=>$data,
         ));
         return $response;
     }
