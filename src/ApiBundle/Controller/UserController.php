@@ -47,7 +47,8 @@ class UserController extends Controller
         $response = new JsonResponse();
         $response->setData(array(
             'data' => ($res)?"Success":"Error",
-            'input'=>$request->request->all()
+            'input'=>$request->request->all(),
+            'inputC'=>$request->getContent()
         ));
         return $response;
     }
