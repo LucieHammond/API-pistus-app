@@ -38,11 +38,15 @@ class NewsController extends Controller
         $generalNews = $em->createQuery(
             "SELECT DISTINCT n
             FROM ApiBundle:News n WHERE n.target = 'all' ORDER BY n.date ASC")->getResult();
+        $globalInfo = $em->createQuery(
+            "SELECT DISTINCT n
+            FROM ApiBundle:News n WHERE n.target = 'info' ORDER BY n.date ASC")->getResult();
 
         $response = new JsonResponse();
         $response->setData(array(
             'myNews' => $myNews,
-            'generalNews' => $generalNews
+            'generalNews' => $generalNews,
+            'generalInfo'=>$globalInfo
         ));
         return $response;
     }
