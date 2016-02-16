@@ -66,7 +66,7 @@ class NewsController extends Controller
         $response->setData(array(
             'myNews' => $myNews,
             'generalNews' => $generalNews,
-            'generalInfo' => $gni
+            'generalInfo' => array_values($gni)
         ));
         return $response;
     }
