@@ -767,7 +767,8 @@ class User implements JsonSerializable
             'avgSpeed'=>$this->avgSpeed,
             'skiTime'=>$this->skiTime,
             'totalTime'=>$this->totalTime,
-            'lastSlope'=>$this->lastSlope
+            'lastSlope'=>$this->lastSlope,
+            'fullName'=>$this->getFullName()
         );
     }
 
