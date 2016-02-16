@@ -51,8 +51,8 @@ class User implements JsonSerializable
     private $room;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\Slope", cascade={"all"})
-     * @ORM\JoinColumn(nullable=true)
+     * @var string
+     * @ORM\Column(name="LastSlope", type="string", length=255)
      */
     private $lastSlope;
 
