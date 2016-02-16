@@ -844,11 +844,11 @@ class User implements JsonSerializable
     /**
      * Set lastSlope
      *
-     * @param \ApiBundle\Entity\Slope $lastSlope
+     * @param string $lastSlope
      *
      * @return User
      */
-    public function setLastSlope(\ApiBundle\Entity\Slope $lastSlope = null)
+    public function setLastSlope($lastSlope)
     {
         $this->lastSlope = $lastSlope;
 
