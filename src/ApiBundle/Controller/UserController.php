@@ -66,7 +66,7 @@ class UserController extends Controller
      */
     public function showAction(User $user, $user_login)
     {
-        $target = $this->getDoctrine()->getManager()->getRepository('ApiBundle:User')->findByLogin($user_login);
+        $target = $this->getDoctrine()->getManager()->getRepository('ApiBundle:User')->findOneByLogin($user_login);
         $response = new JsonResponse();
         $response->setData(array(
             'data' => $target
