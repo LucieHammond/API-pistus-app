@@ -21,7 +21,7 @@ class RoomController extends Controller
     /**
      * Lists all Room entities.
      *
-     * @Route("/", name="room_index")
+     * @Route("/all", name="room_index")
      * @Method("GET")
      */
     public function indexAction(User $user)
@@ -38,15 +38,14 @@ class RoomController extends Controller
     /**
      * Finds and displays a Room entity.
      *
-     * @Route("/{room_id}", name="room_show")
+     * @Route("/", name="room_show")
      * @Method("GET")
      */
-    public function showAction(User $user, $room_id)
+    public function showAction(User $user)
     {
-        $target = $this->getDoctrine()->getManager()->getRepository('ApiBundle:Room')->findOneByLogin($room_id);
         $response = new JsonResponse();
         $response->setData(array(
-            'data' => $target
+            'data' => $user->getRoom();
         ));
         return $response;
     }
