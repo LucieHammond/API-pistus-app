@@ -39,14 +39,14 @@ class RoomController extends Controller
      * Finds and displays a Room entity.
      *
      * @Route("/{room_id}", name="room_show")
-     * @ParamConverter("room", class="ApiBundle:Room", options={"id" = "room_id"})
      * @Method("GET")
      */
-    public function showAction(User $user, Room $room)
+    public function showAction(User $user, $room_id)
     {
+        $target = $this->getDoctrine()->getManager()->getRepository('ApiBundle:Room')->findOneByLogin($room_id);
         $response = new JsonResponse();
         $response->setData(array(
-            'data' => $room
+            'data' => $target
         ));
         return $response;
     }
