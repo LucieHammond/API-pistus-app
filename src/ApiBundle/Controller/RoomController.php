@@ -45,7 +45,7 @@ class RoomController extends Controller
     {
         $response = new JsonResponse();
         $response->setData(array(
-            'data' => $user->getRoom();
+            'data' => $user->getRoom()
         ));
         return $response;
     }
