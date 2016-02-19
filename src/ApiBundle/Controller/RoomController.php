@@ -38,7 +38,7 @@ class RoomController extends Controller
     /**
      * Finds and displays a Room entity.
      *
-     * @Route("/", name="room_show")
+     * @Route("/my", name="room_show")
      * @Method("GET")
      */
     public function showAction(User $user)
