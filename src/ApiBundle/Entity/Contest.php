@@ -30,28 +30,34 @@ class Contest implements JsonSerializable
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", cascade={"all"})
-     * @ORM\JoinColumn(nullable=true)
+     * @var string
+     *
+     * @ORM\Column(name="first", type="string", length=255)
      */
     private $first;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", cascade={"all"})
-     * @ORM\JoinColumn(nullable=true)
+     * @var string
+     *
+     * @ORM\Column(name="second", type="string", length=255)
      */
     private $second;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", cascade={"all"})
-     * @ORM\JoinColumn(nullable=true)
+     * @var string
+     *
+     * @ORM\Column(name="third", type="string", length=255)
      */
     private $third;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", cascade={"all"})
-     * @ORM\JoinColumn(nullable=true)
+     * @var string
+     *
+     * @ORM\Column(name="fourth", type="string", length=255)
      */
     private $fourth;
+
+
     
 
     /**
@@ -104,11 +110,11 @@ class Contest implements JsonSerializable
     /**
      * Set first
      *
-     * @param \ApiBundle\Entity\User $first
+     * @param string $first
      *
      * @return Contest
      */
-    public function setFirst(\ApiBundle\Entity\User $first = null)
+    public function setFirst($first)
     {
         $this->first = $first;
 
@@ -118,7 +124,7 @@ class Contest implements JsonSerializable
     /**
      * Get first
      *
-     * @return \ApiBundle\Entity\User
+     * @return string
      */
     public function getFirst()
     {
@@ -128,11 +134,11 @@ class Contest implements JsonSerializable
     /**
      * Set second
      *
-     * @param \ApiBundle\Entity\User $second
+     * @param string $second
      *
      * @return Contest
      */
-    public function setSecond(\ApiBundle\Entity\User $second = null)
+    public function setSecond($second)
     {
         $this->second = $second;
 
@@ -142,7 +148,7 @@ class Contest implements JsonSerializable
     /**
      * Get second
      *
-     * @return \ApiBundle\Entity\User
+     * @return string
      */
     public function getSecond()
     {
@@ -152,11 +158,11 @@ class Contest implements JsonSerializable
     /**
      * Set third
      *
-     * @param \ApiBundle\Entity\User $third
+     * @param string $third
      *
      * @return Contest
      */
-    public function setThird(\ApiBundle\Entity\User $third = null)
+    public function setThird($third)
     {
         $this->third = $third;
 
@@ -166,7 +172,7 @@ class Contest implements JsonSerializable
     /**
      * Get third
      *
-     * @return \ApiBundle\Entity\User
+     * @return string
      */
     public function getThird()
     {
@@ -176,11 +182,11 @@ class Contest implements JsonSerializable
     /**
      * Set fourth
      *
-     * @param \ApiBundle\Entity\User $fourth
+     * @param string $fourth
      *
      * @return Contest
      */
-    public function setFourth(\ApiBundle\Entity\User $fourth = null)
+    public function setFourth($fourth)
     {
         $this->fourth = $fourth;
 
@@ -190,7 +196,7 @@ class Contest implements JsonSerializable
     /**
      * Get fourth
      *
-     * @return \ApiBundle\Entity\User
+     * @return Contest
      */
     public function getFourth()
     {
