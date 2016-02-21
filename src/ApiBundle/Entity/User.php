@@ -51,8 +51,8 @@ class User implements JsonSerializable
     private $room;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\Slope", cascade={"all"})
-     * @ORM\JoinColumn(nullable=true)
+     * @var string
+     * @ORM\Column(name="LastSlope", type="string", length=255)
      */
     private $lastSlope;
 
@@ -767,7 +767,8 @@ class User implements JsonSerializable
             'avgSpeed'=>$this->avgSpeed,
             'skiTime'=>$this->skiTime,
             'totalTime'=>$this->totalTime,
-            'lastSlope'=>$this->lastSlope
+            'lastSlope'=>$this->lastSlope,
+            'fullName'=>$this->getFullName()
         );
     }
 
@@ -843,11 +844,11 @@ class User implements JsonSerializable
     /**
      * Set lastSlope
      *
-     * @param \ApiBundle\Entity\Slope $lastSlope
+     * @param string $lastSlope
      *
      * @return User
      */
-    public function setLastSlope(\ApiBundle\Entity\Slope $lastSlope = null)
+    public function setLastSlope($lastSlope)
     {
         $this->lastSlope = $lastSlope;
 
