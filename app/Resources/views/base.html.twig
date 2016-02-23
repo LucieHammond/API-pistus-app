@@ -5,6 +5,79 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <style type="text/css">
+            body{
+                background-color: #e9eaed;
+                margin-left: 12%;
+                margin-right: 12%;
+                color: #264F9C;
+                font-family: arial;
+            }
+            table{
+                min-width: 50%;
+                background-color: white;
+                border: 1px solid #264F9C;
+                border-radius: 20px;
+                margin-bottom: 10px;
+                border-collapse: collapse;
+            }
+            label{
+                font-weight: bold;
+            }
+            textarea{
+                min-width: 100%;
+            }
+            td, th, tr{
+                vertical-align: top;
+                padding: 10px;
+                border:none;
+            }
+            tr:nth-of-type(2n){
+                background-color: white;
+            }
+            tr:nth-of-type(2n+1){
+                background-color: #E6F1FC;
+            }
+            thead tr{
+                background-color: #264F9C !important;
+                color:white;
+                border: 1px solid #264F9C;
+            }
+            input[type="text"]{
+                width: 100%;
+            }
+            input[type="button"]:hover, input[type="submit"]:hover, a:hover{
+                color: white;
+                background-color: #264F9C;
+                border-color: transparent;
+            }
+            input[type="button"], input[type="submit"], a{
+                color: #264F9C;
+                background-color: white;
+                font-weight: bold;
+                border-color: #264F9C;
+                text-decoration: none;
+                display: inline-block;
+                padding: 6px 12px;
+                margin-bottom: 1px;
+                font-size: 14px;
+                line-height: 1.42857143;
+                text-transform: uppercase;
+                text-align: center;
+                white-space: nowrap;
+                vertical-align: middle;
+                -ms-touch-action: manipulation;
+                touch-action: manipulation;
+                cursor: pointer;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                background-image: none;
+                border: 1px solid;
+                border-radius: 4px;
+            }
+        </style>
     </head>
     <body>
         {% block body %}{% endblock %}

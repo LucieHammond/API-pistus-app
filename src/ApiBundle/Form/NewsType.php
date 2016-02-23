@@ -5,9 +5,11 @@ namespace ApiBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TargetType extends AbstractType
+class NewsType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,18 +17,16 @@ class TargetType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        //$choices = $options['choices'];
         $builder
-            ->add('name')
-            ->add('users', EntityType::class, 
-                array('choice_label'=> 'fullName',
-                      'class' => 'ApiBundle\Entity\User',
-                      'multiple'      => true,
-                      'expanded'      => true,
-                      'query_builder' => function ($repository) 
-                      { 
-                        return $repository->createQueryBuilder('c')->orderBy('c.lastName', 'ASC'); 
-                      })
-            )
+            ->add('date', DateType::class)
+            ->add('title')
+            ->add('text')
+            ->add('target', ChoiceType::class, 
+                array('choices' =>$options['choices'],
+                      'multiple'      => false,
+                      'expanded'      => false)
+              )
         ;
     }
     
@@ -36,7 +36,8 @@ class TargetType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ApiBundle\Entity\Target'
+            'data_class' => 'ApiBundle\Entity\News',
+            'choices'=>array()
         ));
     }
 }

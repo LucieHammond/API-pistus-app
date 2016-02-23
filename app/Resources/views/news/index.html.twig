@@ -1,3 +1,4 @@
+
 {% extends 'base.html.twig' %}
 
 {% block body %}
@@ -17,22 +18,22 @@
         <tbody>
         {% for news in news %}
             <tr>
-                <td><a href="{{ path('news_show', { 'id': news.id }) }}">{{ news.id }}</a></td>
+                <td>{{ news.id }}</td>
                 <td>{% if news.date %}{{ news.date|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ news.title }}</td>
                 <td>{{ news.text }}</td>
                 <td>{{ news.target }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('news_show', { 'id': news.id }) }}">show</a>
-                        </li>
-                    </ul>
+                    <a href="{{ path('admin_new_show', { 'id': news.id }) }}">Afficher</a>
+                    <a href="{{ path('admin_new_edit', { 'id': news.id }) }}">Modifier</a>
                 </td>
             </tr>
         {% endfor %}
+
+
         </tbody>
     </table>
-
+            <a href="{{ path('admin_new_new') }}">Créer une nouvelle nouvelle</a>
     
 {% endblock %}
+
