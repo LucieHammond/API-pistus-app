@@ -178,6 +178,20 @@ class User implements JsonSerializable
     /**
      * @var float
      *
+     * @ORM\Column(name="totalSpeed", type="float")
+     */
+    private $totalSpeed = 0;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="numPointSpeed", type="integer")
+     */
+    private $numPointSpeed = 0;
+
+    /**
+     * @var float
+     *
      * @ORM\Column(name="avgSpeed", type="float")
      */
     private $avgSpeed = 0;
@@ -676,6 +690,28 @@ class User implements JsonSerializable
     {
         return $this->maxSpeed;
     }
+    /**
+     * Get totalSpeed
+     *
+     * @return float
+     */
+    public function getTotalSpeed()
+    {
+        return $this->totalSpeed;
+    }
+
+    /**
+     * Set totalSpeed
+     *
+     * @param float $totalSpeed
+     * @return User
+     */
+    public function setTotalSpeed($totalSpeed)
+    {
+        $this->totalSpeed = $totalSpeed;
+
+        return $this;
+    }
 
     /**
      * Get avgSpeed
@@ -696,6 +732,28 @@ class User implements JsonSerializable
     public function setAvgSpeed($avgSpeed)
     {
         $this->avgSpeed = $avgSpeed;
+
+        return $this;
+    }
+    /**
+     * Get numPointSpeed
+     *
+     * @return integer
+     */
+    public function getNumPointSpeed()
+    {
+        return $this->numPointSpeed;
+    }
+
+    /**
+     * Set numPointSpeed
+     *
+     * @param integer $avgSpeed
+     * @return User
+     */
+    public function setNumPointSpeed($numPointSpeed)
+    {
+        $this->numPointSpeed = $numPointSpeed;
 
         return $this;
     }
@@ -765,6 +823,8 @@ class User implements JsonSerializable
             'kmSki'=>$this->kmSki,
             'maxSpeed'=>$this->maxSpeed,
             'avgSpeed'=>$this->avgSpeed,
+            'totalSpeed'=>$this->totalSpeed,
+            'numPointSpeed'=>$this->numPointSpeed,
             'skiTime'=>$this->skiTime,
             'totalTime'=>$this->totalTime,
             'lastSlope'=>$this->lastSlope,
