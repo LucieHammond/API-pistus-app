@@ -21,7 +21,7 @@
                 <td>{{ news.id }}</td>
                 <td>{% if news.date %}{{ news.date|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ news.title }}</td>
-                <td>{{ news.text }}</td>
+                <td>{{ news.text | raw }}</td>
                 <td>{{ news.target }}</td>
                 <td>
                     <a href="{{ path('admin_new_show', { 'id': news.id }) }}">Afficher</a>
