@@ -7,6 +7,8 @@ parameters:
     database_name:     symfony
     database_user:     root
     database_password: ~
+    # Use https://www.dailycred.com/article/bcrypt-calculator
+    admin_password: $2a$12$/aODugjXgdowg5P18dtdJe5KS9aOxHM9kmKSGTV/UkdiCeWwRQrTW
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"
 
