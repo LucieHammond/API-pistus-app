@@ -59,7 +59,7 @@ class AdminController extends Controller
             return $this->redirectToRoute('admin_new_show', array('id' => $news->getId()));
         }
 
-        return $this->render('News/new.html.twig', array(
+        return $this->render('news/new.html.twig', array(
             'news' => $news,
             'form' => $form->createView(),
         ));
@@ -75,7 +75,7 @@ class AdminController extends Controller
     {
         $deleteForm = $this->createDeleteForm($new);
 
-        return $this->render('News/show.html.twig', array(
+        return $this->render('news/show.html.twig', array(
             'news' => $new,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -107,7 +107,7 @@ class AdminController extends Controller
             return $this->redirectToRoute('admin_new_edit', array('id' => $new->getId()));
         }
 
-        return $this->render('News/edit.html.twig', array(
+        return $this->render('news/edit.html.twig', array(
             'news' => $new,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
