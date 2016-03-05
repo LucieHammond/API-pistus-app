@@ -47,6 +47,8 @@ class UserController extends Controller
         } else {
             $data = $request->request->all();
         }
+        if(isset($data['maxSpeed']) && $data['maxSpeed']>149)
+            unset($data['maxSpeed']);
         $res = $user->handleRequest($data);
 
         $this->getDoctrine()->getManager()->flush();
