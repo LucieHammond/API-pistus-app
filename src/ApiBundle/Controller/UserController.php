@@ -47,7 +47,7 @@ class UserController extends Controller
         } else {
             $data = $request->request->all();
         }
-        if(isset($data['maxSpeed']) && $data['maxSpeed']>149)
+        if(isset($data['maxSpeed']) && $data['maxSpeed']>41)
             unset($data['maxSpeed']);
         $res = $user->handleRequest($data);
 
